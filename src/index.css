@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Vazirmatn', 'Tahoma', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* SVG Graph semantic tokens (Light Mode) */
+    --graph-dot: #e2e8f0;
+    --graph-edge: #475569;
+    --graph-edge-directed: #1e3a8a;
+    --graph-edge-parallel: #0369a1;
+    --graph-edge-loop: #be123c;
+    --graph-arrow: #1e3a8a;
+    --graph-node-fill: #ffffff;
+    --graph-node-stroke: #1e293b;
+    --graph-node-text: #0f172a;
+    --graph-selected-fill: #1e3a8a;
+    --graph-selected-stroke: #1e3a8a;
+    --graph-selected-text: #ffffff;
+    --graph-selected-halo: #93c5fd;
+    --graph-focus-fill: #dbeafe;
+    --graph-focus-stroke: #2563eb;
+    --graph-focus-text: #1e3a8a;
+    --graph-route-fill: #ecfdf5;
+    --graph-route-stroke: #047857;
+    --graph-route-text: #065f46;
+    --graph-label: #334155;
+    --graph-label-halo: #ffffff;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    /* SVG Graph semantic tokens (Dark Mode) */
+    --graph-dot: #1e293b;
+    --graph-edge: #94a3b8;
+    --graph-edge-directed: #60a5fa;
+    --graph-edge-parallel: #38bdf8;
+    --graph-edge-loop: #fb7185;
+    --graph-arrow: #60a5fa;
+    --graph-node-fill: #0f172a;
+    --graph-node-stroke: #cbd5e1;
+    --graph-node-text: #f8fafc;
+    --graph-selected-fill: #2563eb;
+    --graph-selected-stroke: #60a5fa;
+    --graph-selected-text: #ffffff;
+    --graph-selected-halo: #3b82f6;
+    --graph-focus-fill: #1e3a8a;
+    --graph-focus-stroke: #60a5fa;
+    --graph-focus-text: #eff6ff;
+    --graph-route-fill: #064e3b;
+    --graph-route-stroke: #34d399;
+    --graph-route-text: #ecfdf5;
+    --graph-label: #e2e8f0;
+    --graph-label-halo: #0f172a;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.7;
+  }
+
+  .dark body {
+    background-color: #020617;
+    color: #f1f5f9;
+  }
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* KaTeX inside RTL Persian prose */
+.katex-ltr-inline {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  margin-inline: 0.18em;
+  vertical-align: baseline;
+}
+
+.katex-ltr-block {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: block;
+  overflow-x: auto;
+  padding-block: 0.5rem;
+  text-align: center;
+}
+
+.katex {
+  font-size: 1.02em;
+}
+
+/* Safe area padding for Android/Capacitor devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Print / PDF export styling — always crisp light page even when printing from dark mode */
+@media print {
+  header,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body,
+  .dark body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .dark {
+    --graph-dot: #e2e8f0;
+    --graph-edge: #475569;
+    --graph-edge-directed: #1e3a8a;
+    --graph-edge-parallel: #0369a1;
+    --graph-edge-loop: #be123c;
+    --graph-arrow: #1e3a8a;
+    --graph-node-fill: #ffffff;
+    --graph-node-stroke: #1e293b;
+    --graph-node-text: #0f172a;
+    --graph-label: #334155;
+    --graph-label-halo: #ffffff;
+  }
+
+  .print-card {
+    break-inside: avoid;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    margin-bottom: 12px !important;
+  }
+}
